@@ -19,6 +19,15 @@ class TopicsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    target = Topic.find(params[:id])
+    if target.destroy
+      redirect_to topics_path
+    else
+      redirect_to topic_path(target)
+    end
 
   end
 
